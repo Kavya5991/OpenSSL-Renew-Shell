@@ -17,7 +17,7 @@ for DOMAIN in "${DOMAINS[@]}"; do
   cp $KEY_FILE $KEY_FILE.bak
 
   echo "Generating new private key for $DOMAIN..."
-  openssl genpkey -algorithm RSA -out $KEY_FILE -aes256
+  openssl genpkey -algorithm RSA -out $KEY_FILE
 
   echo "Generating new CSR for $DOMAIN..."
   openssl req -new -key $KEY_FILE -out $CSR_FILE -config $CONF_FILE -subj "/C=US/ST=State/L=City/O=Organization/OU=Unit/CN=$DOMAIN"
