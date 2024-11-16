@@ -14,17 +14,17 @@ A Bash script to automatically check and renew SSL certificates for Nginx. The s
 1. Clone this repository or download the script
 2. Make the script executable:
 ```bash
-chmod +x Renew_Cert.sh
+chmod +x renew_cert.sh
 ```
 3. Run the script manually:
 ```bash
-sudo ./Renew-Cert.sh
+sudo ./renew-cert.sh
 ```
 
 4. For automatic renewal, add to crontab:
 ```bash
 # Run daily at 3am
-0 3 * * * /path/to/Renew-Cert.sh
+0 3 * * * /path/to/renew-cert.sh
 ```
 ## Configuration
 
