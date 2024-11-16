@@ -1,34 +1,35 @@
-# OpenSSL Renewal BASH Script
+# SSL Certificate Auto-Renewal Script
 
-A simple bash script to automate SSL certificate renewal using OpenSSL for Nginx servers.
+A Bash script to automatically check and renew SSL certificates for Nginx. The script checks the expiration date of existing certificates and renews them when they're within 30 days of expiring.
 
-## Overview
+## Features
 
-This script automates:
-- Certificate and key backup
-- RSA private key generation
-- CSR (Certificate Signing Request) generation
-- Nginx restart
-- Certificate validation
+- Automatic certificate renewal when approaching expiration
+- Preserves existing private keys when renewing
+- Creates new key pairs if none exist
+- Backs up existing certificates before renewal
 
-## Prerequisites
+## Usage
 
-- Linux/Unix environment
-- OpenSSL
-- Nginx
-
-## Quick Start
-
-1. Save the script:
+1. Clone this repository or download the script
+2. Make the script executable:
 ```bash
-sudo vi /usr/local/bin/renew_cert.sh
+chmod +x Renew_Cert.sh
+```
+3. Run the script manually:
+```bash
+sudo ./Renew-Cert.sh
 ```
 
-2. Make executable:
+4. For automatic renewal, add to crontab:
 ```bash
-sudo chmod +x /usr/local/bin/renew_cert.sh
+# Run daily at 3am
+0 3 * * * /path/to/Renew-Cert.sh
 ```
+## Configuration
 
-3. Run:
+Edit these variables at the top of the script to match your setup:
 ```bash
-sudo ./renew_cert.sh
+CERT_DIR="/etc/nginx/ssl"   # Certificate directory
+DOMAIN="localhost"          # Domain name
+DAYS=365                    # Validity period in days
